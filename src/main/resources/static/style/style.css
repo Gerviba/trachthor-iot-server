@@ -1,0 +1,9 @@
+
+
+.login-page {
+	background: #7dc99d;
+	background: -moz-linear-gradient(45deg, #7dc99d 0%, #77dd7f 100%);
+	background: -webkit-linear-gradient(45deg, #7dc99d 0%,#77dd7f 100%);
+	background: linear-gradient(45deg, #7dc99d 0%,#77dd7f 100%);
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#7dc99d', endColorstr='#77dd7f',GradientType=1 );
+}
