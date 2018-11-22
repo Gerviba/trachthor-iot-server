@@ -25,10 +25,10 @@ import lombok.NoArgsConstructor;
 public class WarningMessage {
     
     public enum LogLevel {
+        SUCCESS,
         INFO,
         WARNING,
-        ERROR,
-        FATAL;
+        DANGER;
     }
     
     @Id

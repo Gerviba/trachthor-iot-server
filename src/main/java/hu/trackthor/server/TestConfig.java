@@ -42,8 +42,8 @@ public class TestConfig {
         
         warnings.add(LogLevel.INFO, "Test info message");
         warnings.add(LogLevel.WARNING, "Warning! This is a test warning message!");
-        warnings.add(LogLevel.ERROR, "An error occurred");
-        warnings.add(LogLevel.FATAL, "This is a fatal error");
+        warnings.add(LogLevel.SUCCESS, "Ohh! That's fine.");
+        warnings.add(LogLevel.DANGER, "This is a fatal error");
     }
     
 }

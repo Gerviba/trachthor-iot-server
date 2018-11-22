@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
+    <meta charset="utf-8">
+    <title>Simple Polygon</title>
+    <style>
+      /* Always set the map height explicitly to define the size of the div
+       * element that contains the map. */
+      #map {
+        height: 100%;
+      }
+      /* Optional: Makes the sample page fill the window. */
+      html, body {
+        height: 100%;
+        margin: 0;
+        padding: 0;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="map"></div>
+    <script>
+
+      // This example creates a simple polygon representing the Bermuda Triangle.
+
+      function initMap() {
+   	  	var device = new google.maps.LatLng(47.473398, 19.061120);	
+    	  
+    	  
+        var map = new google.maps.Map(document.getElementById('map'), {
+          zoom: 19,
+          center: device,
+          mapTypeId: 'terrain'
+        });
+
+        // Define the LatLng coordinates for the polygon's path.
+        var nogozoneCoords = [
+          {lat: 47.473696, lng: 19.060734},
+          {lat: 47.473144, lng: 19.060669},
+          {lat: 47.472764, lng: 19.061764},
+          {lat: 47.473818, lng: 19.061407},
+          {lat: 47.473696, lng: 19.060734}
+        ];
+
+        var nogozone = new google.maps.Polygon({
+          paths: nogozoneCoords,
+          strokeColor: '#FF0000',
+          strokeOpacity: 0.2,
+          strokeWeight: 10,
+          fillColor: '#FF0000',
+          fillOpacity: 0.5
+        });
+        nogozone.setMap(map);
+        
+        var gozoneCoords = [
+          {lat: 47.473688, lng: 19.060691},
+          {lat: 47.473796, lng: 19.059166},
+          {lat: 47.472884, lng: 19.059150},
+          {lat: 47.473117, lng: 19.060622},
+          {lat: 47.473688, lng: 19.060691}
+        ];
+        
+        var gozone = new google.maps.Polygon({
+            paths: gozoneCoords,
+            strokeColor: '#00FF00',
+            strokeOpacity: 0.2,
+            strokeWeight: 10,
+            fillColor: '#00FF00',
+            fillOpacity: 0.5
+          });
+        gozone.setMap(map);
+        
+        var marker1 = new google.maps.Marker({
+            position: device,
+            title: "Device1",
+            label: "",
+            icon: {
+                url: '/images/device-icon-3.png',
+                size: new google.maps.Size(84, 69),
+                origin: new google.maps.Point(0, 0),
+                anchor: new google.maps.Point(32, 37)
+              }
+        });
+
+        marker1.setMap(map);
+        
+        var marker2 = new google.maps.Marker({
+            position: {lat: 47.473229, lng: 19.060178},
+            title: "Device2",
+            label: "",
+            icon: {
+                url: '/images/device-icon-4.png',
+                size: new google.maps.Size(143, 127),
+                origin: new google.maps.Point(0, 0),
+                anchor: new google.maps.Point(58, 69)
+              }
+        });
+
+        marker2.setMap(map);
+      }
+    </script>
+    <script async defer 
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBXZKy111kwc7sbEPIs91zXI99ak2ldLkQ&callback=initMap">
+    </script>
+  </body>
+</html>
