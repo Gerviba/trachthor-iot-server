@@ -1,5 +1,7 @@
 package hu.trackthor.server.config;
 
+import javax.annotation.PostConstruct;
+
 import org.eclipse.paho.client.mqttv3.MqttConnectOptions;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
@@ -30,7 +32,7 @@ public class MqttOutboundConfig {
     @Value("${trackthor.outbound.clientId:trackThorServer}")
     String clientId;
 
-    @Value("${trackthor.outbound.action-channel-format:/action/{device-id}/{command}/}")
+    @Value("${trackthor.outbound.action-channel-format:/action/{device-id}}")
     String actionChannelFormat;
     
     @Value("${trackthor.outbound.action-all-channel:/action/all/}")
@@ -44,6 +46,14 @@ public class MqttOutboundConfig {
     
     @Value("${trackthor.outbound.clean-session:true}")
     boolean cleanSession;
+    
+    @Value("${trackthor.backend-name:BETA}")
+    String backendName;
+    
+    @PostConstruct
+    public void init() {
+        backendName = "[" + backendName + "]";
+    }
     
     @Bean
     public MessageChannel mqttOutboundChannel() {
@@ -93,11 +103,16 @@ public class MqttOutboundConfig {
             rag.send(topic, data);
         }
         
-        public void sendToDevice(String device, String command, String data) {
+        public void sendToDevice(String device, String data) {
             rag.send(actionChannelFormat
-                    .replace("{device-id}", device)
-                    .replace("{command}", command),
+                    .replace("{device-id}", device),
                     data);
+        }
+        
+        public void sendAction(String device, String regionStatus) {
+            rag.send(actionChannelFormat
+                    .replace("{device-id}", device),
+                    System.currentTimeMillis() + "," + backendName + "," + regionStatus);
         }
         
     }

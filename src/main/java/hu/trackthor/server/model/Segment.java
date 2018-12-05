@@ -2,33 +2,39 @@ package hu.trackthor.server.model;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.Table;
-import javax.validation.constraints.Size;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
 
 @Data
 @Entity
-@Table(name = "devices")
+@Table(name = "segments")
 @AllArgsConstructor
-public class Device {
+public class Segment {
 
     @Id
-    private String uid;
+    @GeneratedValue
+    private Long id;
     
     @Column
-    private String displayName;
+    private long poligon;
+
+    @Column
+    private double lat1;
+
+    @Column
+    private double long1;
+
+    @Column
+    private double lat2;
+
+    @Column
+    private double long2;
     
     @Column
-    @Size(max = 250)
-    private String description;
-    
-    @Column
-    private String type;
-    
-    @Column
-    private long lastUpdated;
+    private int order;
     
 }

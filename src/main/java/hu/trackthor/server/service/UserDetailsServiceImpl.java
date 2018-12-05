@@ -1,5 +1,7 @@
 package hu.trackthor.server.service;
 
+import javax.transaction.Transactional;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
@@ -11,6 +13,7 @@ import hu.trackthor.server.pojo.UserPrincipal;
 import hu.trackthor.server.repo.UserRepository;
 
 @Service
+@Transactional
 public class UserDetailsServiceImpl implements UserDetailsService {
  
     @Autowired

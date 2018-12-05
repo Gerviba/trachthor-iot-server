@@ -2,33 +2,30 @@ package hu.trackthor.server.model;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.Table;
-import javax.validation.constraints.Size;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
 
 @Data
 @Entity
-@Table(name = "devices")
+@Table(name = "segments")
 @AllArgsConstructor
-public class Device {
-
+public class Poligon {
+    
     @Id
-    private String uid;
+    @GeneratedValue
+    private Long id;
     
     @Column
-    private String displayName;
-    
+    private String color;
+
     @Column
-    @Size(max = 250)
-    private String description;
-    
+    private String name;
+
     @Column
-    private String type;
-    
-    @Column
-    private long lastUpdated;
+    private boolean goZone;
     
 }

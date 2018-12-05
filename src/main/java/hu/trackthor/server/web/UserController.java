@@ -17,7 +17,7 @@ public class UserController {
     @Autowired
     WarningService warnings;
     
-    @GetMapping({"/", "/dashboard"})
+    @GetMapping
     String index(Map<String, Object> model) {
         model.put("warnings", warnings.getAll());
         System.out.println(warnings.getAll());

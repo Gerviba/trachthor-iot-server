@@ -24,7 +24,7 @@ public class SecutityConfig extends WebSecurityConfigurerAdapter {
     protected void configure(HttpSecurity http) throws Exception {
         http.authorizeRequests().antMatchers("/control").hasAnyRole("USER")
                 .antMatchers("/admin").hasAnyRole("ADMIN")
-                .and().formLogin().defaultSuccessUrl("/control/");
+                .and().formLogin().defaultSuccessUrl("/control/", true);
     }
     
     @Override
